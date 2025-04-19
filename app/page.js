@@ -1,26 +1,24 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// app/page.js
-
-
+             // app/page.js
 'use client';
 
-// import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductCard from './components/product-card';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+
 import useCartStore from '../store'; // Adjust path if needed
-// import '../styles/home.css'; // Ensure the path to home.css is correct
+
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+
   const [fetchedProducts, setFetchedProducts] = useState([]);
+
   const updateQuantity = useCartStore(state => state.updateQuantity);
   const totalItemsInCart = useCartStore(state => state.totalItemsInCart());
   const cart = useCartStore(state => state.cart);
   const setProducts = useCartStore(state => state.setProducts);
-  const router = useRouter();
+
 
   useEffect(() => {
     async function fetchProducts() {
@@ -28,9 +26,9 @@ export default function Home() {
         const response = await axios.get('/api/products');
         setFetchedProducts(response.data);
         setProducts(response.data);
-        setLoading(false);
-      } catch (err) {
-        setError('Failed to load products.');
+      } catch (error) {
+        console.error("Error fetching products:", error); // Added error logging here
+      } finally {
         setLoading(false);
       }
     }
@@ -48,6 +46,7 @@ export default function Home() {
         <h1>Fresh Vegetables & Fruits</h1>
         <p>Your one-stop online store for fresh, organic produce.</p>
       </header>
+
       <section className="product-grid">
         {fetchedProducts.map((product) => (
           <ProductCard
@@ -57,16 +56,25 @@ export default function Home() {
           />
         ))}
       </section>
+
       <div className="cart-button-container">
         <Link href="/cart">
-          <button className="view-cart-btn" disabled={Object.keys(cart).length === 0 || Object.values(cart).every(qty => qty === 0)}>
+          <button
+            className="view-cart-btn"
+            disabled={
+              Object.keys(cart).length === 0 ||
+              Object.values(cart).every(qty => qty === 0)
+            }
+          >
             View Cart ({totalItemsInCart})
           </button>
         </Link>
       </div>
 
-      {error && <p className="error-message">{error}</p>}
+
+
       {loading && <p className="loading-message">Loading products...</p>}
+
     </div>
   );
 }

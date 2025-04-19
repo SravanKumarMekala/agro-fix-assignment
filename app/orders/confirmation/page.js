@@ -1,21 +1,23 @@
 // app/orders/confirmation/page.js
-'use client';
+'use client'; // Ensure this component runs on the client side only
 
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import Link from 'next/link'; // Fix: import separately
-import styles from './page.module.css';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation'; // Client-side hook
+import Link from 'next/link';
 import axios from 'axios';
 
-export default function OrderConfirmationPage() {
-  const searchParams = useSearchParams(); // Moved up
+import styles from './page.module.css';
+
+
+function OrderConfirmationPage() {
+  const searchParams = useSearchParams(); // Client-side hook for search params
   const [orderId, setOrderId] = useState(null);
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const id = searchParams.get('orderId');
+    const id = searchParams.get('orderId'); // Get order ID from URL
     if (!id) {
       setError('No order ID found in the URL.');
       setLoading(false);
@@ -23,17 +25,17 @@ export default function OrderConfirmationPage() {
     }
 
     setOrderId(id);
-    console.log('Order ID received on confirmation page:', id);
+
     fetchOrderDetails(id);
   }, [searchParams]);
 
   const fetchOrderDetails = async (id) => {
     try {
-      console.log('Fetching order details for ID:', id);
+
       const response = await axios.get(`/api/orders/${id}`);
       setOrder(response.data);
     } catch (err) {
-      console.error('Error fetching order details:', err);
+      console.log(err);
       setError('Failed to load order details.');
     } finally {
       setLoading(false);
@@ -81,5 +83,14 @@ export default function OrderConfirmationPage() {
 
       <Link href="/" className={styles.homeLink}>Go back to shopping</Link>
     </div>
+  );
+}
+
+// Wrap the component in Suspense to handle client-side rendering correctly
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OrderConfirmationPage />
+    </Suspense>
   );
 }

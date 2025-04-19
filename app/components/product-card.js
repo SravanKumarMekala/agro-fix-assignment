@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './product-card.module.css';
+import Image from 'next/image';
 
 export default function ProductCard({ product, onQuantityChange }) {
   const [quantity, setQuantity] = useState(0);
@@ -44,15 +45,13 @@ export default function ProductCard({ product, onQuantityChange }) {
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
         {/* Ensure correct image path */}
-        <img
-          src={product.image_url || '/images/default.jpg'}  // Use fallback if image_url is not available
-          alt={product.name}
-          className={styles.image}
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = '/images/default.jpg';  // Fallback image if the image fails to load
-          }}
-        />
+        <Image
+  src={product.image}
+  alt={product.name}
+  width={300}
+  height={200}
+  style={{ objectFit: 'cover' }}
+/>
       </div>
       <div className={styles.details}>
         <h3 className={styles.title}>{product.name}</h3>

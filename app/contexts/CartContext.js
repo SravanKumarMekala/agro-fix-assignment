@@ -1,8 +1,8 @@
 // contexts/CartContext.js
 'use client';
 
-import React, { createContext, useState, useEffect } from 'react';
-import styles from 'CartContext.module.css';
+// import React, { createContext, useState, useEffect } from 'react';
+// import styles from 'CartContext.module.css';
 
 export const CartContext = createContext();
 
