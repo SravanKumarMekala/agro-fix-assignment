@@ -1,0 +1,115 @@
+
+/* General styling for the cart page */
+.cart-container {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Cart header */
+  .cart-header {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Cart items list */
+  .cart-items {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    align-items: center;
+  }
+  
+  .cart-item-name {
+    font-weight: bold;
+    flex: 2;
+  }
+  
+  .cart-item-quantity {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-item-quantity input {
+    width: 50px;
+    margin: 0 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .cart-item-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .cart-item-actions button {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cart-item-actions button:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Cart totals */
+  .cart-totals {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cart-totals .total {
+    font-weight: bold;
+  }
+  
+  .cart-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  /* Cart clear button */
+  .clear-cart-btn {
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .clear-cart-btn:hover {
+    background-color: #1976d2;
+  }
+  
+  /* Cart item quantity button */
+  .update-quantity-btn {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .update-quantity-btn:hover {
+    background-color: #388e3c;
+  }
+  

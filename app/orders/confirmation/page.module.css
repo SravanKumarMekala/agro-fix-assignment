@@ -1,0 +1,79 @@
+/* app/orders/confirmation/page.module.css */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #2e7d32;
+  text-align: center;
+}
+
+.confirmationText {
+  background-color: #e8f5e9;
+  border-left: 4px solid #43a047;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
+}
+
+.orderId {
+  color: #1b5e20;
+}
+
+.orderDetails {
+  border-top: 1px solid #ddd;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.orderDetails h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.orderDetails ul {
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.orderDetails li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.error {
+  color: #c62828;
+  background-color: #ffebee;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  margin: 1rem;
+}
+
+.trackLink, .homeLink {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #2e7d32;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.trackLink:hover,
+.homeLink:hover {
+  background-color: #1b5e20;
+}
