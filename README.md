@@ -1,124 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bulk Vegetable/Fruit Order Web Application
 
-## Getting Started
+## Objective:
 
-First, run the development server:
+The goal of this project is to create a full-stack web application that allows buyers to browse and place bulk vegetable/fruit orders. Buyers can track the status of their orders, while admins can manage products and orders. This application aims to develop skills in Next.js/React.js, API development, database management, and deployment strategies.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Project Setup and Initialization
+
+### Step 1: Project Directory Setup
+
+1. Create a new directory for the project:
+    ```bash
+    mkdir agro-order-app
+    cd agro-order-app
+    ```
+
+2. Initialize the project using **Next.js** (with TypeScript support):
+    ```bash
+    npx create-next-app@latest . --typescript
+    ```
+
+3. Install the necessary dependencies:
+    ```bash
+    npm install axios react-hook-form yup pg
+    npm install @hookform/resolvers
+    ```
+
+4. Initialize Git repository:
+    ```bash
+    git init
+    ```
+
+---
+
+## Development Process
+
+### 1. Database Setup
+
+1. Set up PostgreSQL using [Neon.tech](https://neon.tech) or [Docker](https://www.docker.com/) for local database setup.
+
+2. Design the database schema:
+   - **products** table:
+     - id
+     - name
+     - price
+   - **orders** table:
+     - id
+     - buyer_name
+     - buyer_contact
+     - delivery_address
+     - items (JSON serialized)
+     - status
+
+3. Optionally use an ORM such as **Prisma** or **Sequelize** to interact with the database.
+
+### 2. Backend API Development
+
+Create API routes in `pages/api/`:
+
+- **GET /api/products**: Fetch the product catalogue.
+- **POST /api/orders**: Place a new order.
+- **GET /api/orders/:id**: View order details for buyers.
+- **GET /api/orders**: View all orders (admin access).
+- **PUT /api/orders/:id**: Update order status (admin access).
+- **POST /api/products**: Add a new product (admin access).
+- **PUT /api/products/:id**: Edit a product (admin access).
+- **DELETE /api/products/:id**: Delete a product (admin access).
+
+### 3. Frontend Development
+
+1. **Product Catalogue Page**:
+   - Display available products fetched from the API.
+
+2. **Order Placement Form**:
+   - Form to enter buyer's details, select products, and specify quantities and delivery information.
+   - Use **react-hook-form** and **yup** for form management and validation.
+
+3. **Order Tracking View**:
+   - Allow buyers to check the status of their orders with order IDs.
+
+4. **Admin Dashboard**:
+   - Admin can view and manage orders and inventory.
+
+5. **State Management**:
+   - Use **React Context**, **Redux**, or **Zustand** for shared data management like product catalogue and user authentication status.
+
+---
+
+### Styling and Design
+
+1. **UI Library/CSS Framework**:
+   - Use a CSS framework like **Tailwind CSS**, **Material UI**, or **Chakra UI** for UI consistency.
+
+2. **Responsive Design**:
+   - Ensure that the web app works well across all devices.
+
+3. **User Experience**:
+   - Focus on intuitive navigation, clear user feedback, and easy-to-use interfaces.
+
+---
+
+## Deployment
+
+1. **Vercel Deployment**:
+   - Create an account on [Vercel](https://vercel.com).
+   - Connect your GitHub repository to Vercel.
+   - Configure environment variables (e.g., database credentials).
+
+2. **Test Deployment**:
+   - After deployment, verify that the app is functional by testing all features.
+
+---
+
+## Submission Guidelines
+
+### GitHub Repository
+
+1. **Source Code**: All source code should be pushed to the GitHub repository.
+2. **README.md**: This file should be included with:
+   - A brief description of the project and features implemented.
+   - Setup instructions for running the application locally.
+   - Instructions for setting up the database.
+   - Other relevant information like dependencies, testing, and deployment.
+3. **.env File**:
+   - Database credentials should be stored in the `.env` file.
+   - DO NOT commit the `.env` file to the repository. Instead, include instructions on how to set up the `.env` file.
+
+### Database Setup
+
+- For **Neon.tech** or **Docker**: Include instructions on configuring the database and necessary environment variables.
+
+---
+
+## Example `.env` file
+
+```
+DATABASE_URL=your_database_url_here
+SECRET_KEY=your_secret_key_here
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Deployment URL
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-Here’s a concise yet powerful `README.md` for your **Agro Fix Assignment** project:
+Once the app is deployed, provide the live URL from Vercel.
 
 ---
 
-```markdown
-# 🌾 Agro Fix Assignment
-
-A full-stack Next.js application designed to streamline agro-product discovery and cart management. Built with performance, simplicity, and modern dev practices in mind.
-
-## 🚀 Features
-
-- 🔎 **Product Listing** – Dynamic fetch from PostgreSQL with `axios`
-- 🛒 **Cart Functionality** – Global cart state via `zustand`
-- 🧾 **Checkout Form** – Validated using `react-hook-form` + `yup`
-- 📦 **API Routes** – Modular Next.js handlers for products and orders
-- 🌐 **Responsive UI** – Built with modern CSS Modules
-
----
-
-## 🛠️ Local Setup
-
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/SravanKumarMekala/agro-fix-assignment.git
-   cd agro-fix-assignment
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Set up `.env.local`**
-   ```
-   DATABASE_URL=postgresql://your_user:your_password@localhost:5432/agrodb
-   ```
-
-4. **Run the dev server**
-   ```bash
-   npm run dev
-   ```
-   App runs at `http://localhost:3000`
-
----
-
-## 🗃️ PostgreSQL Setup
-
-1. **Create the database**
-   ```sql
-   CREATE DATABASE agrodb;
-   ```
-
-2. **Create the `products` table**
-   ```sql
-   CREATE TABLE products (
-     id SERIAL PRIMARY KEY,
-     name VARCHAR(255),
-     description TEXT,
-     price NUMERIC,
-     image_url TEXT
-   );
-   ```
-
-3. *(Optional)*: Seed some data:
-   ```sql
-   INSERT INTO products (name, description, price, image_url)
-   VALUES ('Wheat Seed', 'High-yield variety', 120.00, '/images/default.jpg');
-   ```
-
----
-
-## 📌 Notes
-
-- Ensure Postgres is running locally and accessible via the `DATABASE_URL`.
-- Add `/public/images/default.jpg` or update paths accordingly.
-- API routes are available at `/api/products` and `/api/orders`.
-
----
-
-## 🤝 Contribution
-
-Forks, PRs, and feedback are welcome! Let’s build smart, sustainable agro-tech—together.
-
-```
-
----
-
-Let me know if you want badges, deploy instructions, or a diagram. Ready to take this to Vercel or Dockerize?
