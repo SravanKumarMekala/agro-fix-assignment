@@ -1,4 +1,6 @@
 // app/page.js
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
