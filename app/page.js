@@ -3,13 +3,13 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductCard from './components/product-card';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import useCartStore from '../store'; // Adjust path if needed
-import '../styles/home.css'; // Ensure the path to home.css is correct
+// import '../styles/home.css'; // Ensure the path to home.css is correct
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
